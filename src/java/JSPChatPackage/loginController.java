@@ -6,6 +6,7 @@ package JSPChatPackage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -76,7 +77,8 @@ public class loginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.setContentType("text/html");
+        //response.setContentType("text/html");
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
@@ -84,12 +86,15 @@ public class loginController extends HttpServlet {
         loginBean.setUsername(username);
         loginBean.setPassword(password);
         
-        if(loginBean.checkLogin(username, password)){
+        if(loginBean.checkLogin()){
             //login success
-            //requestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
+            dispatch.forward(request, response);
         }
         else {
             //login fail
+            RequestDispatcher dispatch = request.getRequestDispatcher("/loginError.jsp");
+            dispatch.forward(request, response);
         }
         
         processRequest(request, response);

@@ -20,7 +20,7 @@ public class LoginBean {
         this.password = password;
     }
     
-    public boolean checkLogin(String username, String password){
+    public boolean checkLogin(){
         
         if("admin".equals(getUsername()) && "admin".equals(getPassword())){
             return true;
