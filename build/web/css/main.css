@@ -37,6 +37,11 @@ h1 {
   font-size: 3em;
 }
 
+h3.loginError {
+    color: red;
+    text-align: center;
+}
+
 p {
   font-family: 'PT Sans Narrow', sans-serif;
 }
