@@ -50,6 +50,21 @@ select {
   margin-bottom: 30px;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+label {
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
 button {
   padding: 19px 39px 18px 39px;
   color: black;
