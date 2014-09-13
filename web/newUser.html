@@ -21,9 +21,26 @@
                 <input type="radio" id="female" value="female" name="gender">
                 <label for="female" class="light">Female</label>
                 
-                <p>Your Date of Birth:       <input type="text" name="name"/></p>
+                <p><label>Date of Birth:</label></p>
+                <input class="bday" type="text" name="bday" value="Date"/>
+                <select class="bday" id="bMonth" name="bMonth">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                <input class="bday" type="text" name="bYear" value="Year"/>
         	
                 <button type="submit">Create User</button>
+                <a href="loginForm.html">Existing User</a>
         </form>
     </body>
 </html>
