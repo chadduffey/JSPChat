@@ -1,0 +1,85 @@
+package JSPChatPackage;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CreateAccountBean {
+    private String username;
+    private String password;
+    private String name;
+    private String DOB;
+    private String Gender;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
+
+    public String getGender() {
+        return Gender;
+    }
+
+    public void setGender(String Gender) {
+        this.Gender = Gender;
+    }
+
+    public boolean userExists(String username){
+        return true;
+    }
+    
+    public boolean addToDB(String username, String password, String name, String DOB, String gender){
+        
+        //open a DB connection
+        try {
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            Statement statement = connection.createStatement();
+            ResultSet users = statement.executeQuery("SELECT * FROM user");
+            
+            
+            
+            //commit all values to the DB
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+        
+        //we didnt find the username and password combo.
+        return false;
+    }
+    
+    
+}

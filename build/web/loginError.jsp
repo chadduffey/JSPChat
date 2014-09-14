@@ -7,6 +7,6 @@
         <title>Login Error</title>
     </head>
     <body>
-        <h3 class="loginError">Incorrect with username or password</h3>
+        <h3 class="loginError">Incorrect username or password</h3>
     </body>
 </html>

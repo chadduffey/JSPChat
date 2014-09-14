@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="loginForm.html" %>
+<%@include file="newUser.html" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +7,6 @@
         <title>Login Error</title>
     </head>
     <body>
-        <h3 class="loginError">Incorrect username or password</h3>
+        <h3 class="loginError">A user with that name already exists</h3>
     </body>
 </html>

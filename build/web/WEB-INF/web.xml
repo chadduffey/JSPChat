@@ -4,9 +4,33 @@
         <servlet-name>loginController</servlet-name>
         <servlet-class>JSPChatPackage.loginController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateUserBean</servlet-name>
+        <servlet-class>JSPChatPackage.CreateUserBean</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateAccountBean</servlet-name>
+        <servlet-class>JSPChatPackage.CreateAccountBean</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateController</servlet-name>
+        <servlet-class>JSPChatPackage.CreateController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateUserBean</servlet-name>
+        <url-pattern>/CreateUserBean</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateAccountBean</servlet-name>
+        <url-pattern>/CreateAccountBean</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateController</servlet-name>
+        <url-pattern>/CreateController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
