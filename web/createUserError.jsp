@@ -7,6 +7,6 @@
         <title>Login Error</title>
     </head>
     <body>
-        <h3 class="loginError">A user with that name already exists</h3>
+        <h3 class="loginError">A user with that login name already exists</h3>
     </body>
 </html>

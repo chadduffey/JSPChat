@@ -44,10 +44,13 @@ public class LoginBean {
                     //we found the user in the db
                     if (users.getString("password").equals(pwd)){
                         //the password matches as well
+                        users.close();
                         return true;
                     }
                 }
             }
+            users.close();
+            
         } catch (SQLException e) {
                 e.printStackTrace();
         }

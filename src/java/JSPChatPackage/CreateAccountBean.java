@@ -54,7 +54,32 @@ public class CreateAccountBean {
     }
 
     public boolean userExists(String username){
-        return true;
+        
+//open a DB connection
+        try {
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            Statement statement = connection.createStatement();
+            ResultSet users = statement.executeQuery("SELECT * FROM user");
+
+            //check if the username exists
+            while (users.next()){
+                if (users.getString("username").equals(username)){
+                    //we found the username in the db
+                    users.close();
+                    return true;
+                }
+            }
+            users.close();
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+        
+        //user name does not already exist
+        return false;
     }
     
     public boolean addToDB(String username, String password, String name, String DOB, String gender){

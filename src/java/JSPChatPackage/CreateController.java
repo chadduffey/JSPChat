@@ -54,6 +54,7 @@ public class CreateController extends HttpServlet {
         createaccount.setDOB(DOB);
         createaccount.setGender(gender);
         
+        //check if the user already exists in the db
         if (createaccount.userExists(username)) {
             RequestDispatcher dispatch = request.getRequestDispatcher("/createUserError.jsp");
             dispatch.forward(request, response);            
