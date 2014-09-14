@@ -43,7 +43,12 @@ public class CreateController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String fullname = request.getParameter("name");
-        String DOB = request.getParameter("DOB");
+        
+        String day      = request.getParameter("bDay");
+        String month    = request.getParameter("bMonth");
+        String year     = request.getParameter("bYear");
+        String DOB      = day + month + year;
+        
         String gender = request.getParameter("gender");
         
         
@@ -60,16 +65,19 @@ public class CreateController extends HttpServlet {
             dispatch.forward(request, response);            
         }
         
-//        if(loginBean.checkLogin(loginBean.getUsername(), loginBean.getPassword())){
-//            //login success
-//            RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
-//            dispatch.forward(request, response);
-//        }
-//        else {
-//            //login fail
-//            RequestDispatcher dispatch = request.getRequestDispatcher("/loginError.jsp");
-//            dispatch.forward(request, response);
-//        }
+        //add the user to the DB
+        
+        
+        if(createaccount.addToDB()){
+            //login success
+            RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
+            dispatch.forward(request, response);
+        }
+        else {
+            //login fail
+            RequestDispatcher dispatch = request.getRequestDispatcher("/loginError.jsp");
+            dispatch.forward(request, response);
+        }
         
         processRequest(request, response);
         

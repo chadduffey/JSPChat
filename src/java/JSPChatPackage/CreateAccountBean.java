@@ -11,7 +11,7 @@ public class CreateAccountBean {
     private String password;
     private String name;
     private String DOB;
-    private String Gender;
+    private String gender;
 
     public String getUsername() {
         return username;
@@ -46,11 +46,11 @@ public class CreateAccountBean {
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
-    public void setGender(String Gender) {
-        this.Gender = Gender;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public boolean userExists(String username){
@@ -82,7 +82,7 @@ public class CreateAccountBean {
         return false;
     }
     
-    public boolean addToDB(String username, String password, String name, String DOB, String gender){
+    public boolean addToDB(){
         
         //open a DB connection
         try {
@@ -91,19 +91,27 @@ public class CreateAccountBean {
             String dbPassword = "Password123";
             Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
 
-            Statement statement = connection.createStatement();
-            ResultSet users = statement.executeQuery("SELECT * FROM user");
-            
-            
-            
             //commit all values to the DB
+            String query = "INSERT INTO user (username, password, name, DOB, gender) " +
+                            "VALUES ('" + username + "', " +
+                                    "'" + password + "', " +
+                                    "'" + name + "', " +
+                                    "'" + DOB + "', " +
+                                    "'" + gender + "')";
+            
+            Statement statement = connection.createStatement();
+            int rowCount = statement.executeUpdate(query);
+            
+            //success
+            return true;
             
         } catch (SQLException e) {
                 e.printStackTrace();
         }
         
-        //we didnt find the username and password combo.
+        //something went wrong
         return false;
+        
     }
     
     
