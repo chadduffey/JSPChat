@@ -57,6 +57,9 @@ public class CreateAccountBean {
         
 //open a DB connection
         try {
+            //load driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
             String dbURL = "jdbc:mysql://localhost:3306/jspchat";
             String dbUsername = "root";
             String dbPassword = "Password123";
@@ -76,6 +79,8 @@ public class CreateAccountBean {
             users.close();
         } catch (SQLException e) {
                 e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         
         //user name does not already exist
