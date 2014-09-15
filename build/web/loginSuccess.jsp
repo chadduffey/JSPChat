@@ -20,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-heart-empty"></span> Welcome to JSP Chat</a>
+              <a class="navbar-brand" href="#"> ... jsp chat</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
