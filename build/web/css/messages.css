@@ -1,0 +1,51 @@
+body {
+  background: url("../img/chat.jpg") no-repeat center center ;
+  -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: top center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed;
+}
+
+.friendbox {
+    padding-left: 100px;
+    width: 300px;
+    float:left;
+}
+
+.messagebox {
+    float:left;
+    padding-left: 50px;
+}
+
+.searchbox {
+    float: left;
+    padding-left: 50px;
+}
+
+li {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 1.1em;
+}
+
+a.navbar-brand {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 1.2em;    
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    padding-left: 100px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 3em;
+}
+
+h3 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2em; 
+}
