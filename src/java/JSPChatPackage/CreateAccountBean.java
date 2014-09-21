@@ -107,6 +107,8 @@ public class CreateAccountBean {
             Statement statement = connection.createStatement();
             int rowCount = statement.executeUpdate(query);
             
+            statement.close();
+            
             //success
             return true;
             

@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class CreateController extends HttpServlet {
 
@@ -71,9 +72,19 @@ public class CreateController extends HttpServlet {
             
             //log them in - this will update the session object
             LoginBean loginbean = new LoginBean();
-            loginbean.checkLogin(fullname, password);
+            if (loginbean.checkLogin(username, password)){
+                
+                //set the session object to include the user id from the database
+                HttpSession session = request.getSession();
+                session.setAttribute("sessionUserId", loginbean.getId());
+                session.setAttribute("sessionUserName", loginbean.getUsername());
+                session.setAttribute("sessionFullName", loginbean.getFullname());
+                
+                RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
+                dispatch.forward(request, response);               
+            }
             
-            RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("/loginError.jsp");
             dispatch.forward(request, response);
         }
         else {
