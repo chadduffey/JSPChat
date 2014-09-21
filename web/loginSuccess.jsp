@@ -37,7 +37,7 @@
           </div><!-- /.container-fluid -->
         </nav>
         
-        <h1>Your Stuff</h1>
+        <h1>${sessionFullName} - Your Stuff</h1>
         
         <div class="friendbox">
             <h3>Friends</h3>

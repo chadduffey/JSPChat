@@ -9,6 +9,16 @@ import java.sql.Statement;
 public class LoginBean {
     private String username;
     private String password;
+    private int id;
+    private String fullname;
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public int getId() {    
+        return id;
+    }
 
     public String getUsername() {
         return username;
@@ -47,6 +57,11 @@ public class LoginBean {
                     //we found the user in the db
                     if (users.getString("password").equals(pwd)){
                         //the password matches as well
+                        
+                        //retrieve user details to store in the bean
+                        id = users.getInt("user_id");
+                        fullname = users.getString("name");
+                        
                         users.close();
                         return true;
                     }

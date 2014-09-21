@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class loginController extends HttpServlet {
 
@@ -50,6 +51,14 @@ public class loginController extends HttpServlet {
         
         if(loginBean.checkLogin(loginBean.getUsername(), loginBean.getPassword())){
             //login success
+                        
+            //set the session object to include the user id from the database
+            HttpSession session = request.getSession();
+            session.setAttribute("sessionUserId", loginBean.getId());
+            session.setAttribute("sessionUserName", loginBean.getUsername());
+            session.setAttribute("sessionFullName", loginBean.getFullname());
+            
+            //send the user to the main messages page
             RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
             dispatch.forward(request, response);
         }

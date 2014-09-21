@@ -66,10 +66,13 @@ public class CreateController extends HttpServlet {
         }
         
         //add the user to the DB
-        
-        
         if(createaccount.addToDB()){
-            //login success
+            //add success
+            
+            //log them in - this will update the session object
+            LoginBean loginbean = new LoginBean();
+            loginbean.checkLogin(fullname, password);
+            
             RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
             dispatch.forward(request, response);
         }

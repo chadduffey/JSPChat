@@ -51,14 +51,11 @@ public class NewMessageController extends HttpServlet {
         newmessage.setBcc(bcc);
         newmessage.setSubject(subject);
         newmessage.setContent(content);
-        
-        //function to break out the individual recipients?
-        //not 100% sure if we need this here.
-        
+             
         //function to write the message to the messages table
-        
-        
-        
+        boolean success = newmessage.updateMessageTable();
+        boolean success2 = newmessage.updateAllMessagesTable();
+                
         processRequest(request, response);
     }
 
