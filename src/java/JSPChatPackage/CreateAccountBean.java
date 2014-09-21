@@ -55,7 +55,7 @@ public class CreateAccountBean {
 
     public boolean userExists(String username){
         
-//open a DB connection
+    //open a DB connection
         try {
             //load driver
             Class.forName("com.mysql.jdbc.Driver");

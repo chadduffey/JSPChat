@@ -16,6 +16,14 @@
         <servlet-name>CreateController</servlet-name>
         <servlet-class>JSPChatPackage.CreateController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewMessage</servlet-name>
+        <servlet-class>JSPChatPackage.NewMessage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewMessageController</servlet-name>
+        <servlet-class>JSPChatPackage.NewMessageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>CreateController</servlet-name>
         <url-pattern>/CreateController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewMessage</servlet-name>
+        <url-pattern>/NewMessage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewMessageController</servlet-name>
+        <url-pattern>/NewMessageController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
