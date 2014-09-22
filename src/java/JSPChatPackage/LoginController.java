@@ -58,6 +58,13 @@ public class LoginController extends HttpServlet {
             session.setAttribute("sessionUserName", loginBean.getUsername());
             session.setAttribute("sessionFullName", loginBean.getFullname());
             
+            //set up the existing messages array
+            GetMessagesBean getmessagesbean = new GetMessagesBean();
+            session.setAttribute("sessionMessages", getmessagesbean.getMessageIds(loginBean.getId()));
+            
+            Integer[] messageIds = getmessagesbean.getMessageIds(loginBean.getId());
+            session.setAttribute("sessionSubjects", getmessagesbean.getAllMessageSubjects(messageIds));
+            
             //send the user to the main messages page
             RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
             dispatch.forward(request, response);

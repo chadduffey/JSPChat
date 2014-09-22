@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,9 +55,9 @@
         <div class="messagebox">
             <h3>Messages</h3>
             <ul class="list-group">
-                <li class="list-group-item"><a href=""><span class="glyphicon glyphicon-envelope"></span> Happy Birthday</a></li>
-                <li class="list-group-item"><a href=""><span class="glyphicon glyphicon-envelope"></span> Come Visit</a></li>
-                <li class="list-group-item"><a href=""><span class="glyphicon glyphicon-envelope"></span> Saying Hi</a></li>
+                <c:forEach var="item" items="${sessionSubjects}">
+                    <li class="list-group-item"><a href=""><span class="glyphicon glyphicon-envelope"></span> ${item}</a></li>   
+                </c:forEach>
             </ul>
         </div>
         
