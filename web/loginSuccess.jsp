@@ -56,7 +56,7 @@
             <h3>Messages</h3>
             <ul class="list-group">
                 <c:forEach var="item" items="${sessionSubjects}">
-                    <li class="list-group-item"><a href=""><span class="glyphicon glyphicon-envelope"></span> ${item}</a></li>   
+                    <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-envelope"></span> ${item}</a></li>   
                 </c:forEach>
             </ul>
         </div>
