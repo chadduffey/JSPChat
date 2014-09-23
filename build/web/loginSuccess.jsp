@@ -30,7 +30,7 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Your Stuff</a></li>
                 <li><a href="#">New Message</a></li>
-                <li><a href="#">Your Profile</a></li>
+                <li><a href="editProfile.jsp">Your Profile</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="LogoutController">Log Out</a></li>
