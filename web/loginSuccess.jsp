@@ -33,7 +33,7 @@
                 <li><a href="#">Your Profile</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="logout.html">Log Out</a></li>
+                <li><a href="LogoutController">Log Out</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
