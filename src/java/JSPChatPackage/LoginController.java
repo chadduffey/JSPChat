@@ -65,6 +65,13 @@ public class LoginController extends HttpServlet {
             Integer[] messageIds = getmessagesbean.getMessageIds(loginBean.getId());
             session.setAttribute("sessionSubjects", getmessagesbean.getAllMessageSubjects(messageIds));
             
+            //set up the friends array
+            GetFriendsBean getfriendsbean = new GetFriendsBean();
+            session.setAttribute("sessionFriendIds", getfriendsbean.getFriendIds(loginBean.getId()));
+
+            Integer[] friendIds = getfriendsbean.getFriendIds(loginBean.getId());
+            session.setAttribute("sessionFriends", getfriendsbean.getAllFriends(friendIds));
+            
             //send the user to the main messages page
             RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
             dispatch.forward(request, response);

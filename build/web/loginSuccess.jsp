@@ -33,7 +33,7 @@
                 <li><a href="#">Your Profile</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Log Out</a></li>
+                <li><a href="logout.html">Log Out</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
@@ -44,11 +44,9 @@
         <div class="friendbox">
             <h3>Friends</h3>
             <ul class="list-group">
-                <li class="list-group-item"><span class="glyphicon glyphicon-user"></span> Jim</li>
-                <li class="list-group-item"><span class="glyphicon glyphicon-user"></span> Bob</li>
-                <li class="list-group-item"><span class="glyphicon glyphicon-user"></span> Scratchy</li>
-                <li class="list-group-item"><span class="glyphicon glyphicon-user"></span> Jessica</li>
-                <li class="list-group-item"><span class="glyphicon glyphicon-user"></span> Harry</li>
+                <c:forEach var="item" items="${sessionFriends}">
+                    <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-envelope"></span> ${item}</a></li>   
+                </c:forEach>
             </ul>
         </div>
 
