@@ -72,6 +72,13 @@ public class LoginController extends HttpServlet {
             Integer[] friendIds = getfriendsbean.getFriendIds(loginBean.getId());
             session.setAttribute("sessionFriends", getfriendsbean.getAllFriends(friendIds));
             
+            //set up the non friends array
+            GetFriendsBean getnonfriendsbean = new GetFriendsBean();
+            session.setAttribute("sessionNonFriendIds", getnonfriendsbean.getNonFriendIds(loginBean.getId()));
+
+            Integer[] nonfriendIds = getnonfriendsbean.getNonFriendIds(loginBean.getId());
+            session.setAttribute("sessionNonFriends", getnonfriendsbean.getAllNonFriends(nonfriendIds));
+            
             //send the user to the main messages page
             RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
             dispatch.forward(request, response);

@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Your Stuff</a></li>
-                <li><a href="#">New Message</a></li>
+                <li><a href="#">All Users</a></li>
                 <li><a href="editProfile.jsp">Your Profile</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -45,7 +45,13 @@
             <h3>Friends</h3>
             <ul class="list-group">
                 <c:forEach var="item" items="${sessionFriends}">
-                    <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-envelope"></span> ${item}</a></li>   
+                    <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-user"></span> ${item}</a></li>   
+                </c:forEach>
+            </ul>
+            <h3>New Friends?</h3>
+            <ul class="list-group">
+                <c:forEach var="item" items="${sessionNonFriends}">
+                    <li class="list-group-item"><a href="#"><span class="glyphicon glyphicon-user"></span> ${item}</a></li>   
                 </c:forEach>
             </ul>
         </div>
@@ -59,10 +65,16 @@
             </ul>
         </div>
         
-        <div class="searchbox">
-            <h3>Find People</h3>
-            <p><input type="text" name="search" class="form-control" placeholder="Search"/></p>
+        <div class="input-group">
+            <h3>Send a Message</h3>
+            <form action="NewMessageController" method="post">
+                        <p>To:          <input type="text" name="to" class="form-control"/></p>
+                        <p>Cc:          <input type="text" name="cc" class="form-control"/></p>
+                        <p>Bcc:         <input type="text" name="bcc" class="form-control"/></p>
+                        <p>Subject:     <input type="text" name="subject" class="form-control"/>
+                        <p>Message:     <textarea name="content" class="form-control" rows="5"></textarea>	
+                        <p><button type="submit" class="btn btn-default">Send Message</button></p>
+            </form>
         </div>
-        
     </body>
 </html>

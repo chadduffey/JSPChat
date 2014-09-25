@@ -50,7 +50,51 @@ public class GetFriendsBean {
             Integer [] idsArray = ids.toArray(new Integer[ids.size()]);
 
             return idsArray;
-        }
+    }
+    
+    public Integer[] getNonFriendIds(int userId){
+
+            ArrayList<Integer> ids = new ArrayList<Integer>(1);
+
+
+            //open a DB connection
+            try {
+                //load driver
+                Class.forName("com.mysql.jdbc.Driver");
+
+                String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+                String dbUsername = "root";
+                String dbPassword = "Password123";
+                Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+                String preparedSQL = "SELECT * FROM friend_links WHERE friender != ?";
+                PreparedStatement ps = connection.prepareStatement(preparedSQL);
+                ps.setInt(1, userId);
+
+                ResultSet myfriends = ps.executeQuery();
+
+                int newfriend_id;
+
+                //scroll through the friends for the user id
+                while (myfriends.next()){
+                    //get the message id
+                    newfriend_id = myfriends.getInt("friendee");
+                    ids.add(newfriend_id); 
+                }
+                myfriends.close();
+
+            } catch (SQLException e) {
+                    e.printStackTrace();
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            //convert the array list to an array to return it
+            Integer [] idsArray = ids.toArray(new Integer[ids.size()]);
+
+            return idsArray;
+    }
     
     public String getFriendName(int friendId){
 
@@ -100,5 +144,18 @@ public class GetFriendsBean {
         String [] friendArray = allFriends.toArray(new String[allFriends.size()]);
 
         return friendArray;  
-    }    
+    }
+    
+    public String[] getAllNonFriends(Integer[] ids){
+        ArrayList<String> allNonFriends = new ArrayList<String>(1);
+        
+        for (Integer id : ids) {
+            allNonFriends.add(getFriendName(id));   
+        }
+        
+        //convert the array list to an array to return it
+        String [] nonFriendArray = allNonFriends.toArray(new String[allNonFriends.size()]);
+
+        return nonFriendArray;  
+    } 
 }

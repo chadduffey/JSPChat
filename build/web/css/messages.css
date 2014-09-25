@@ -50,4 +50,10 @@ h3 {
     font-size: 2em; 
 }
 
+.input-group {
+    padding-left: 100px;
+    width: 500px;
+    float: left;
+}
+
 
