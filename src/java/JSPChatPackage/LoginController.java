@@ -80,7 +80,7 @@ public class LoginController extends HttpServlet {
             session.setAttribute("sessionNonFriends", getnonfriendsbean.getAllNonFriends(nonfriendIds));
             
             //send the user to the main messages page
-            RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
+            RequestDispatcher dispatch = request.getRequestDispatcher("/welcome.jsp");
             dispatch.forward(request, response);
         }
         else {
