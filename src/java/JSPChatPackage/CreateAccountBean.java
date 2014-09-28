@@ -121,5 +121,33 @@ public class CreateAccountBean {
         
     }
     
+    public void modifyUser(Integer userId, String newUserName, String newpwd, String newName, String newDOB, String newGender){
+        //open a DB connection
+        try {
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            //commit all values to the DB
+            String query = "UPDATE user SET " +
+                    "username = '" + newUserName + "', " +
+                    "password = '" + newpwd + "', " +
+                    "name = '" + newName + "', " +
+                    "DOB = '" + newDOB + "', " +
+                    "gender = '" + newGender + "' " +
+                    "WHERE user_id = '" + userId + "'";
+                    
+            
+            Statement statement = connection.createStatement();
+            Integer rowCount = statement.executeUpdate(query);
+            
+            statement.close();
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }    
+    }
+    
     
 }

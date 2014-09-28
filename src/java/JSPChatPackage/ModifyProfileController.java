@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class modifyProfileAuthController extends HttpServlet {
+public class ModifyProfileController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -20,10 +20,10 @@ public class modifyProfileAuthController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet modifyProfileAuthController</title>");            
+            out.println("<title>Servlet ModifyProfileController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet modifyProfileAuthController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ModifyProfileController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         } finally {
@@ -40,25 +40,31 @@ public class modifyProfileAuthController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String password = request.getParameter("password");
         
         //retrieve the session object
         HttpSession session = request.getSession();
         //get the current user bean, assign it to a bean object to work with
         CurrentUserBean currentuserbean = (CurrentUserBean) session.getAttribute("sessionCurrentUserBean");
+        
+        //grab a create account bean to add things to the user database
+        CreateAccountBean createaccountbean = new CreateAccountBean();
+        
+        //get the updates from the user
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String fullname = request.getParameter("name");  
+        String day      = request.getParameter("bDay");
+        String month    = request.getParameter("bMonth");
+        String year     = request.getParameter("bYear");
+        String DOB      = day + month + year;  
+        String gender   = request.getParameter("gender");
+        
+        //make the change in the database
+        createaccountbean.modifyUser(currentuserbean.getId(), username, password, fullname, DOB, gender);
 
-        if(currentuserbean.checkLogin(currentuserbean.getUsername(), password)){
-            //login success
-
-            RequestDispatcher dispatch = request.getRequestDispatcher("/profile.jsp");
-            dispatch.forward(request, response);
-        }
-        else {
-            //login fail
-            RequestDispatcher dispatch = request.getRequestDispatcher("/profileAuth.jsp");
-            dispatch.forward(request, response);
-        }
+        //display the page
+        RequestDispatcher dispatch = request.getRequestDispatcher("/profileUpdated.jsp");
+        dispatch.forward(request, response);
         
         processRequest(request, response);
     }

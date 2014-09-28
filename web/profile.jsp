@@ -31,16 +31,16 @@
             </ul>
           </div>
             
-            <form action="#">
+            <form action="ModifyProfileController" method="post">
                 <div class="col-md-6">
                     <h2>Editing ${sessionCurrentUserBean.getName()}</h2>
                     <form action="EditUserController" method="post">
-                            <p>Login Name:       <input type="text" name="username" class="form-control" value="${sessionUserName}"/></p>
-                            <p>Password:         <input type="password" name="password" class="form-control"/></p>
-                            <p>Your Full Name:   <input type="text" name="name" class="form-control" value="${sessionFullName}"/></p>
+                            <p>Login Name:       <input type="text" name="username" class="form-control" value="${username}"/></p>
+                            <p>Password:         <input type="password" name="password" class="form-control" value="${password}"/></p>
+                            <p>Your Full Name:   <input type="text" name="name" class="form-control" value="${fullname}"/></p>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="gender" id="female" value="female" >
+                            <input type="radio" name="gender" id="female" value="female" checked>
                             Female
                         </label>
                     </div>
@@ -53,7 +53,7 @@
                         <p><label>Date of Birth:</label></p>
                         <input class="bday" type="text" name="bDay" value="Date"/>
                         <select class="bday" id="bMonth" name="bMonth">
-                            <option value="01">January</option>
+                            <option value="01" checked>January</option>
                             <option value="02">February</option>
                             <option value="03">March</option>
                             <option value="04">April</option>
@@ -69,7 +69,6 @@
                         <input class="bday" type="text" name="bYear" value="Year"/>
                         
                     <button class="form-control" type="submit">Update</button>
-                    
                 </div>
             </form>
         </div>

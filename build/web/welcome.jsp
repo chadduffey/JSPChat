@@ -30,7 +30,7 @@
             </ul>
           </div>
           <div class="col-md-9">
-              <h2>Welcome to JSP Chat: ${sessionLoginBean.getFullname()}</h2>
+              <h2>Welcome to JSP Chat: ${sessionCurrentUserBean.getName()}</h2>
           </div>
         </div>
         
