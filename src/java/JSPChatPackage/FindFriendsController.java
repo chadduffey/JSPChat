@@ -14,7 +14,7 @@ public class FindFriendsController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+       
         //retrieve the session object
         HttpSession session = request.getSession();
         //get the current user bean, assign it to a bean object to work with
@@ -34,6 +34,8 @@ public class FindFriendsController extends HttpServlet {
         session.setAttribute("sessionNonFriendsBean", friendsbean);
         
         //display the page
+        
+        
         RequestDispatcher dispatch = request.getRequestDispatcher("/findfriends.jsp");
         dispatch.forward(request, response);
         

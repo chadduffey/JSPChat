@@ -131,6 +131,31 @@ public class FriendsBean {
         
     }
     
+    public void addFriendLink(Integer newFriend, Integer userId){
+        //open a DB connection
+        try {
+            //load driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            String query = "INSERT INTO friend_links (friender, friendee) " +
+                            "VALUES ('" + userId + "', " + 
+                            "'" + newFriend + "')";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+  
+        } catch (SQLException e) {
+                e.printStackTrace();
+        
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }      
+    }
+    
      public Integer[] getNonFriendIds(Integer userId){
 
             ArrayList<Integer> ids = new ArrayList<Integer>(1);
