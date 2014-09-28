@@ -40,6 +40,14 @@
         <servlet-name>UnFriendController</servlet-name>
         <servlet-class>JSPChatPackage.UnFriendController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FindFriendsController</servlet-name>
+        <servlet-class>JSPChatPackage.FindFriendsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MakeFriendController</servlet-name>
+        <servlet-class>JSPChatPackage.MakeFriendController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
@@ -79,6 +87,14 @@
     <servlet-mapping>
         <servlet-name>UnFriendController</servlet-name>
         <url-pattern>/UnFriendController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FindFriendsController</servlet-name>
+        <url-pattern>/FindFriendsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakeFriendController</servlet-name>
+        <url-pattern>/MakeFriendController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

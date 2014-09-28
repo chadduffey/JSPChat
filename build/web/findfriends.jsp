@@ -22,7 +22,7 @@
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="welcome.jsp">Welcome</a></li>
                 <li><a href="PopulateFriendsController">Friends</a></li>
-                <li class="active"><a href="findfriends.jsp">Find Friends</a></li>
+                <li class="active"><a href="FindFriendsController">Find Friends</a></li>
                 <li><a href="messages.jsp">Inbox</a></li>
                 <li><a href="newmessage.jsp">New Message</a></li>
                 <li><a href="profile.jsp">Profile</a></li>
@@ -33,12 +33,12 @@
             <table class="table table-striped">
                 <tr>
                     <th>Name</th>
-                    <th>New Friend?</th>
+                    <th>Make Friend?</th>
                 </tr>
-                <c:forEach var="item" items="${sessionNonFriends}">
+                <c:forEach var="item" items="${sessionNonFriendsBean.getAllNonFriendIds()}">
                     <tr>                  
-                        <td><span class="glyphicon glyphicon-globe"></span> ${item}</td>
-                        <td><span class="glyphicon glyphicon-thumbs-up"></span></td>
+                        <td><span class="glyphicon glyphicon-globe"></span> ${sessionNonFriendsBean.getFriendName(item)}</td> 
+                        <td><a href="MakeFriendController?addId=${item}"><span class="glyphicon glyphicon-thumbs-up"></span></a></td>
                     </tr>                   
                 </c:forEach>
             </table>

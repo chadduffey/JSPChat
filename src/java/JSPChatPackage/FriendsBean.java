@@ -13,6 +13,16 @@ public class FriendsBean {
 
     private Integer[] AllFriendIds;
     private String[] AllFriendNames;
+    private Integer[] AllNonFriendIds;
+    private String[] AllNonFriendNames;
+
+    public Integer[] getAllNonFriendIds() {
+        return AllNonFriendIds;
+    }
+
+    public String[] getAllNonFriendNames() {
+        return AllNonFriendNames;
+    }
     
     public Integer[] getAllFriendIds() {
         return AllFriendIds;
@@ -119,5 +129,74 @@ public class FriendsBean {
             e.printStackTrace();
         }    
         
+    }
+    
+     public Integer[] getNonFriendIds(Integer userId){
+
+            ArrayList<Integer> ids = new ArrayList<Integer>(1);
+
+            //open a DB connection
+            try {
+                //load driver
+                Class.forName("com.mysql.jdbc.Driver");
+
+                String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+                String dbUsername = "root";
+                String dbPassword = "Password123";
+                Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+                
+                String preparedSQL = "SELECT user_id FROM user WHERE user_id != ?";
+                PreparedStatement ps = connection.prepareStatement(preparedSQL);
+                ps.setInt(1, userId);
+                
+                ResultSet everyoneButMe = ps.executeQuery();
+                
+                while (everyoneButMe.next()){
+                    //add the ID to the list
+                    ids.add(everyoneButMe.getInt("user_id"));
+                }
+                //this should leave us with a list of id's that arnt ours.
+                
+            } catch (SQLException e) {
+                    e.printStackTrace();
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+                
+            //next - exclude those on our friends list.
+            //AllFriendIds has the friends in it
+                
+            //convert the array list to an array to return it
+            Integer [] idsArray = ids.toArray(new Integer[ids.size()]);
+
+            //set up a structure to hold people that arnt friends yet
+            ArrayList<Integer> notFriendsYet = new ArrayList<Integer>(1);
+            
+            Integer idsvalue;
+            Integer friendsvalue;
+            Boolean found = false;
+            
+            //compare the two arrays - friends, and everyone
+            for (int i = 0; i < idsArray.length; i++){
+                idsvalue = idsArray[i];
+                for (int j = 0; j < AllFriendIds.length; j++){
+                    friendsvalue = AllFriendIds[j];
+                    if (idsvalue == friendsvalue){
+                        found = true;
+                    }
+                }
+                if (!found){
+                    notFriendsYet.add(idsvalue);
+                }
+                found = false;
+            }
+
+            //we should now have a list of just the people we arnt friends
+            //with yet
+            Integer [] notYetFriendsArray = notFriendsYet.toArray(new Integer[notFriendsYet.size()]);
+            
+            AllNonFriendIds = notYetFriendsArray;
+            return notYetFriendsArray;
     }
 }
