@@ -30,15 +30,27 @@
             </ul>
           </div>
         
-            <form>
+            <form action="NewMessageController" method="post">
                 <div class="col-md-1">  
                     <h3>Recipients</h3>
                     <c:forEach var="item" items="${sessionFriends}">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="recipients" value=${item}> ${item}
-                            </label>
-                        </div>
+                        
+                        <c:if test="${rcptname == item}">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="recipients" checked value=${item}> ${item}
+                                </label>
+                            </div>
+                        </c:if>
+
+                        <c:if test="${rcptname != item}">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="recipients" value=${item}> ${item}
+                                </label>
+                            </div>
+                        </c:if>
+                        
                     </c:forEach>
                 </div>
                 <div class="col-md-6">
@@ -46,6 +58,7 @@
                     <input type="text" name="subject" class="form-control"><br>
                     <h3>Message</h3>
                     <textarea name="message" rows="10" class="form-control"></textarea>
+                    <button type="submit">Send Message</button>
                 </div>
             </form>                  
         </div>

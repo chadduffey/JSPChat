@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class GetMessagesBean {
     
-    public Integer[] getMessageIds(int userId){
+    public Integer[] getMessageIds(Integer userId){
 
         ArrayList<Integer> ids = new ArrayList<Integer>(1);
         
@@ -30,7 +30,7 @@ public class GetMessagesBean {
 
             ResultSet mymessages = ps.executeQuery();
 
-            int newmsg_id;
+            Integer newmsg_id;
 
             //scroll through the messages for the user id
             while (mymessages.next()){
@@ -53,7 +53,7 @@ public class GetMessagesBean {
         return idsArray;
     }
     
-    public String getMessageSubject(int msgId){
+    public String getMessageSubject(Integer msgId){
 
         String theSubject = null;
         

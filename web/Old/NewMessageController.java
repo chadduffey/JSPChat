@@ -39,18 +39,18 @@ public class NewMessageController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String to = request.getParameter("to");
-        String cc = request.getParameter("cc");
-        String bcc = request.getParameter("bcc");
+        //String to = request.getParameter("to");
+        //String cc = request.getParameter("cc");
+        //String bcc = request.getParameter("bcc");
         String subject = request.getParameter("subject");
-        String content = request.getParameter("content");
+        String message = request.getParameter("message");
         
         NewMessageBean newmessage = new NewMessageBean();
-        newmessage.setTo(to);
-        newmessage.setCc(cc);
-        newmessage.setBcc(bcc);
+        //newmessage.setTo(to);
+        //newmessage.setCc(cc);
+        //newmessage.setBcc(bcc);
         newmessage.setSubject(subject);
-        newmessage.setContent(content);
+        newmessage.setContent(message);
              
         //function to write the message to the messages table
         boolean success = newmessage.updateMessageTable();

@@ -43,16 +43,14 @@ public class CreateController extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String fullname = request.getParameter("name");
-        
+        String fullname = request.getParameter("name");  
         String day      = request.getParameter("bDay");
         String month    = request.getParameter("bMonth");
         String year     = request.getParameter("bYear");
-        String DOB      = day + month + year;
-        
-        String gender = request.getParameter("gender");
-        
-        
+        String DOB      = day + month + year;  
+        String gender   = request.getParameter("gender");
+
+        //bean to add the new user to the DB if the username does not exist
         CreateAccountBean createaccount = new CreateAccountBean();
         createaccount.setUsername(username);
         createaccount.setPassword(password);
@@ -71,16 +69,16 @@ public class CreateController extends HttpServlet {
             //add success
             
             //log them in - this will update the session object
-            LoginBean loginbean = new LoginBean();
-            if (loginbean.checkLogin(username, password)){
+            CurrentUserBean currentuserbean = new CurrentUserBean();
+            
+            if (currentuserbean.checkLogin(username, password)){
                 
                 //set the session object to include the user id from the database
                 HttpSession session = request.getSession();
-                session.setAttribute("sessionUserId", loginbean.getId());
-                session.setAttribute("sessionUserName", loginbean.getUsername());
-                session.setAttribute("sessionFullName", loginbean.getFullname());
+                session.setAttribute("sessionUserId", currentuserbean.getId());
+                session.setAttribute("sessionCurrentUserBean", currentuserbean);
                 
-                RequestDispatcher dispatch = request.getRequestDispatcher("/loginSuccess.jsp");
+                RequestDispatcher dispatch = request.getRequestDispatcher("/welcome.jsp");
                 dispatch.forward(request, response);               
             }
             

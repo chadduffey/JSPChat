@@ -87,7 +87,7 @@ public class NewMessageBean {
                                     "'" + "11:30" + "')";
             
             Statement statement = connection.createStatement();
-            int rowCount = statement.executeUpdate(query);
+            Integer rowCount = statement.executeUpdate(query);
             
             //success
             return true;
@@ -117,7 +117,7 @@ public class NewMessageBean {
                                     "'" + "to" + "')";
             
             Statement statement = connection.createStatement();
-            int rowCount = statement.executeUpdate(query);
+            Integer rowCount = statement.executeUpdate(query);
             
             //success
             return true;

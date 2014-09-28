@@ -10,6 +10,7 @@
     </head>
     
     <body>
+        <c:set var="rcptname" value="nothing"></c:set>
         <div class="row">
             <div class="jumbotron">
                 <h1>JSP Chat</h1>
@@ -39,8 +40,8 @@
                 <c:forEach var="item" items="${sessionFriends}">
                     <tr>                  
                         <td><span class="glyphicon glyphicon-user"></span> ${item}</td>
-                        <td><span class="glyphicon glyphicon-comment"></span></td>
-                        <td><span class="glyphicon glyphicon-thumbs-down"></span></td>
+                        <td><a href="PassRecipientIdController?name=${item}"><span class="glyphicon glyphicon-comment"></span></a></td>
+                        <td><a href="#"><span class="glyphicon glyphicon-thumbs-down"></span></a></td>
                     </tr>                   
                 </c:forEach>
             </table>

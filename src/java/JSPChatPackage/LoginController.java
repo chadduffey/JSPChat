@@ -45,41 +45,24 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-        LoginBean loginBean = new LoginBean();
-        loginBean.setUsername(username);
-        loginBean.setPassword(password);
+        CurrentUserBean currentuserbean = new CurrentUserBean();
+        currentuserbean.setUsername(username);
+        currentuserbean.setPassword(password);
         
-        if(loginBean.checkLogin(loginBean.getUsername(), loginBean.getPassword())){
+        if(currentuserbean.checkLogin(currentuserbean.getUsername(), currentuserbean.getPassword())){
             //login success
                         
             //set the session object to include the user id from the database
-            HttpSession session = request.getSession();
-            session.setAttribute("sessionUserId", loginBean.getId());
-            session.setAttribute("sessionUserName", loginBean.getUsername());
-            session.setAttribute("sessionFullName", loginBean.getFullname());
-            
-            //set up the existing messages array
-            GetMessagesBean getmessagesbean = new GetMessagesBean();
-            session.setAttribute("sessionMessages", getmessagesbean.getMessageIds(loginBean.getId()));
-            
-            Integer[] messageIds = getmessagesbean.getMessageIds(loginBean.getId());
-            session.setAttribute("sessionSubjects", getmessagesbean.getAllMessageSubjects(messageIds));
-            
-            //set up the friends array
-            GetFriendsBean getfriendsbean = new GetFriendsBean();
-            session.setAttribute("sessionFriendIds", getfriendsbean.getFriendIds(loginBean.getId()));
+            HttpSession session = request.getSession();     
+            session.setAttribute("sessionUserId", currentuserbean.getId());
+            session.setAttribute("sessionCurrentUserBean", currentuserbean);
 
-            Integer[] friendIds = getfriendsbean.getFriendIds(loginBean.getId());
-            session.setAttribute("sessionFriends", getfriendsbean.getAllFriends(friendIds));
+            //refresh all the bean attributes for the current user from DB
+            currentuserbean.refresh_ALL();
             
-            //set up the non friends array
-            GetFriendsBean getnonfriendsbean = new GetFriendsBean();
-            session.setAttribute("sessionNonFriendIds", getnonfriendsbean.getNonFriendIds(loginBean.getId()));
-
-            Integer[] nonfriendIds = getnonfriendsbean.getNonFriendIds(loginBean.getId());
-            session.setAttribute("sessionNonFriends", getnonfriendsbean.getAllNonFriends(nonfriendIds));
-            
-            //send the user to the main messages page
+           
+            //send the user to the welcome page
+            //----------------------------------------
             RequestDispatcher dispatch = request.getRequestDispatcher("/welcome.jsp");
             dispatch.forward(request, response);
         }

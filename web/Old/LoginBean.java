@@ -9,14 +9,14 @@ import java.sql.Statement;
 public class LoginBean {
     private String username;
     private String password;
-    private int id;
+    private Integer id;
     private String fullname;
-
+ 
     public String getFullname() {
         return fullname;
     }
 
-    public int getId() {    
+    public Integer getId() {    
         return id;
     }
 

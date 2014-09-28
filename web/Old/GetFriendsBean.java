@@ -8,7 +8,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class GetFriendsBean {
-    public Integer[] getFriendIds(int userId){
+
+    private Integer[] myFriendIds;
+    private Integer[] nonFriendIds;
+    private String[] allMyFriends;
+    private String[] allMyNonFriends;
+
+    public Integer[] getMyFriendIds() {
+        return myFriendIds;
+    }
+
+    public Integer[] getNonFriendIds() {
+        return nonFriendIds;
+    }
+
+    public String[] getAllMyFriends() {
+        return allMyFriends;
+    }
+
+    public String[] getAllMyNonFriends() {
+        return allMyNonFriends;
+    }
+    
+    public Integer[] getFriendIds(Integer userId){
 
             ArrayList<Integer> ids = new ArrayList<Integer>(1);
 
@@ -29,7 +51,7 @@ public class GetFriendsBean {
 
                 ResultSet myfriends = ps.executeQuery();
 
-                int newfriend_id;
+                Integer newfriend_id;
 
                 //scroll through the friends for the user id
                 while (myfriends.next()){
@@ -52,7 +74,7 @@ public class GetFriendsBean {
             return idsArray;
     }
     
-    public Integer[] getNonFriendIds(int userId){
+    public Integer[] getNonFriendIds(Integer userId){
 
             ArrayList<Integer> ids = new ArrayList<Integer>(1);
 
@@ -73,7 +95,7 @@ public class GetFriendsBean {
 
                 ResultSet myfriends = ps.executeQuery();
 
-                int newfriend_id;
+                Integer newfriend_id;
 
                 //scroll through the friends for the user id
                 while (myfriends.next()){
@@ -96,7 +118,7 @@ public class GetFriendsBean {
             return idsArray;
     }
     
-    public String getFriendName(int friendId){
+    public String getFriendName(Integer friendId){
 
         String name = null;
         

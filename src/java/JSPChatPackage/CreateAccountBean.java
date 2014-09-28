@@ -105,7 +105,7 @@ public class CreateAccountBean {
                                     "'" + gender + "')";
             
             Statement statement = connection.createStatement();
-            int rowCount = statement.executeUpdate(query);
+            Integer rowCount = statement.executeUpdate(query);
             
             statement.close();
             
