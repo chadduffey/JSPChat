@@ -1,0 +1,40 @@
+form {
+  margin: 10px;
+  padding: 10px 20px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+input[type="radio"] {
+  margin: 0 4px 8px 0;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+input.bday {
+    float: left;
+    width: 90px;
+    margin-left: 20px;
+}
+
+select.bday {
+    float: left;
+    width: 120px;
+    margin-left: 20px;   
+}
+
+
+

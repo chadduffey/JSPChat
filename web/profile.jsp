@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link href="css/profile.css" rel="stylesheet" />
         <title>Welcome</title>
     </head>
     
@@ -31,14 +32,12 @@
           </div>
             
             <form action="#">
-                <div class="col-md-4">
-                    <h1>Editing ${sessionFullName}</h1>
+                <div class="col-md-6">
+                    <h2>Editing ${sessionCurrentUserBean.getName()}</h2>
                     <form action="EditUserController" method="post">
                             <p>Login Name:       <input type="text" name="username" class="form-control" value="${sessionUserName}"/></p>
                             <p>Password:         <input type="password" name="password" class="form-control"/></p>
                             <p>Your Full Name:   <input type="text" name="name" class="form-control" value="${sessionFullName}"/></p>
-                </div>
-                <div class="col-md-4">
                     <div class="radio">
                         <label>
                             <input type="radio" name="gender" id="female" value="female" >
@@ -51,24 +50,26 @@
                             Male
                         </label>
                     </div>
-                    <p><label>Date of Birth:</label></p>
-                    <input class="form-control" type="text" name="bDay" value="Date"/>
-                    <select class="form-control" id="bMonth" name="bMonth">
-                        <option value="01">January</option>
-                        <option value="02">February</option>
-                        <option value="03">March</option>
-                        <option value="04">April</option>
-                        <option value="05">May</option>
-                        <option value="06">June</option>
-                        <option value="07">July</option>
-                        <option value="08">August</option>
-                        <option value="09">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                    <input class="form-control" type="text" name="bYear" value="Year"/>
+                        <p><label>Date of Birth:</label></p>
+                        <input class="bday" type="text" name="bDay" value="Date"/>
+                        <select class="bday" id="bMonth" name="bMonth">
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <input class="bday" type="text" name="bYear" value="Year"/>
+                        
                     <button class="form-control" type="submit">Update</button>
+                    
                 </div>
             </form>
         </div>
