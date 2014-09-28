@@ -32,6 +32,14 @@
         <servlet-name>PassRecipientIdController</servlet-name>
         <servlet-class>JSPChatPackage.PassRecipientIdController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PopulateFriendsController</servlet-name>
+        <servlet-class>JSPChatPackage.PopulateFriendsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UnFriendController</servlet-name>
+        <servlet-class>JSPChatPackage.UnFriendController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>PassRecipientIdController</servlet-name>
         <url-pattern>/PassRecipientIdController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopulateFriendsController</servlet-name>
+        <url-pattern>/PopulateFriendsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UnFriendController</servlet-name>
+        <url-pattern>/UnFriendController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

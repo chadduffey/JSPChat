@@ -20,12 +20,6 @@
         <div class="row">
           <div class="col-md-1">
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="welcome.jsp">Welcome</a></li>
-                <li><a href="friends.jsp">Friends</a></li>
-                <li><a href="findfriends.jsp">Find Friends</a></li>
-                <li><a href="messages.jsp">Inbox</a></li>
-                <li><a href="newmessage.jsp">New Message</a></li>
-                <li><a href="profile.jsp">Profile</a></li>
                 <li class="active"><a href="logout.jsp">Logout</a></li>
             </ul>
           </div>

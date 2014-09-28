@@ -22,7 +22,7 @@
           <div class="col-md-1">
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="welcome.jsp">Welcome</a></li>
-                <li class="active"><a href="friends.jsp">Friends</a></li>
+                <li class="active"><a href="PopulateFriendsController">Friends</a></li>
                 <li><a href="findfriends.jsp">Find Friends</a></li>
                 <li><a href="messages.jsp">Inbox</a></li>
                 <li><a href="newmessage.jsp">New Message</a></li>
@@ -30,18 +30,19 @@
                 <li><a href="LogoutController">Logout</a></li>
             </ul>
           </div>
-          <div class="col-md-4">  
+          <div class="col-md-4">
+              <p>${test}</p>
             <table class="table table-striped">
                 <tr>
                     <th>Name</th>
                     <th>Message</th>
                     <th>Un-Friend?</th>
                 </tr>
-                <c:forEach var="item" items="${sessionFriends}">
+                <c:forEach var="item" items="${sessionFriendsBean.getAllFriendIds()}">
                     <tr>                  
-                        <td><span class="glyphicon glyphicon-user"></span> ${item}</td>
-                        <td><a href="PassRecipientIdController?name=${item}"><span class="glyphicon glyphicon-comment"></span></a></td>
-                        <td><a href="#"><span class="glyphicon glyphicon-thumbs-down"></span></a></td>
+                        <td><span class="glyphicon glyphicon-user"></span> ${sessionFriendsBean.getFriendName(item)}</td>
+                        <td><a href="PassRecipientIdController?id=${item}"><span class="glyphicon glyphicon-comment"></span></a></td>
+                        <td><a href="UnFriendController?rmId=${item}"><span class="glyphicon glyphicon-thumbs-down"></span></a></td>
                     </tr>                   
                 </c:forEach>
             </table>
