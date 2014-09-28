@@ -23,32 +23,19 @@
                 <li><a href="welcome.jsp">Welcome</a></li>
                 <li><a href="PopulateFriendsController">Friends</a></li>
                 <li><a href="FindFriendsController">Find Friends</a></li>
-                <li class="active"><a href="messages.jsp">Inbox</a></li>
+                <li><a href="messages.jsp">Inbox</a></li>
                 <li><a href="newmessage.jsp">New Message</a></li>
-                <li><a href="profileAuth.jsp">Profile</a></li>
+                <li class="active"><a href="profileAuth.jsp">Profile</a></li>
                 <li><a href="LogoutController">Logout</a></li>
             </ul>
           </div>
-          
-            <div class="col-md-8">  
-            <table class="table table-striped">
-                <tr>
-                    <th>Opened?</th>
-                    <th>Subject</th>
-                    <th>Sender</th>
-                </tr>
-                <c:forEach var="item" items="${sessionSubjects}">
-                    <tr>                  
-                        <td><span class="glyphicon glyphicon-envelope"></span></td>
-                        <td>${item}</td>
-                        <td></td>
-                    </tr>                   
-                </c:forEach>
-            </table>
-          </div>  
-            
+          <div class="col-md-2">
+            <form action="modifyProfileAuthController" method="post">
+                <p>Enter your password to modify profile:</p>
+                <p><input type="password" name="password" class="form-control"/></p>
+                <p><button type="submit">OK</button></p>
+            </form>
+          </div>
         </div>
-        
-        
     </body>
 </html>

@@ -25,7 +25,7 @@
                 <li><a href="FindFriendsController">Find Friends</a></li>
                 <li><a href="messages.jsp">Inbox</a></li>
                 <li class="active"><a href="newmessage.jsp">New Message</a></li>
-                <li><a href="profile.jsp">Profile</a></li>
+                <li><a href="profileAuth.jsp">Profile</a></li>
                 <li><a href="LogoutController">Logout</a></li>
             </ul>
           </div>

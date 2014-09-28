@@ -25,7 +25,7 @@
                 <li><a href="FindFriendsController">Find Friends</a></li>
                 <li><a href="messages.jsp">Inbox</a></li>
                 <li><a href="newmessage.jsp">New Message</a></li>
-                <li class="active"><a href="profile.jsp">Profile</a></li>
+                <li class="active"><a href="profileAuth.jsp">Profile</a></li>
                 <li><a href="LogoutController">Logout</a></li>
             </ul>
           </div>
@@ -34,8 +34,8 @@
                 <div class="col-md-4">
                     <h1>Editing ${sessionFullName}</h1>
                     <form action="EditUserController" method="post">
-                            <p>Login Name:       <input type="text" name="username"class="form-control" value="${sessionUserName}"/></p>
-                            <p>Password:         <input type="password" name="password"class="form-control"/></p>
+                            <p>Login Name:       <input type="text" name="username" class="form-control" value="${sessionUserName}"/></p>
+                            <p>Password:         <input type="password" name="password" class="form-control"/></p>
                             <p>Your Full Name:   <input type="text" name="name" class="form-control" value="${sessionFullName}"/></p>
                 </div>
                 <div class="col-md-4">
