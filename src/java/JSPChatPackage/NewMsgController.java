@@ -17,9 +17,12 @@ public class NewMsgController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String id = request.getParameter("id");
+        
         //retrieve the session object
         HttpSession session = request.getSession();
         session.setAttribute("tempid", id);
+        
+        
         
         //display the page
         RequestDispatcher dispatch = request.getRequestDispatcher("newmessage.jsp");

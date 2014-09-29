@@ -31,7 +31,7 @@
             </ul>
           </div>
             <div class="col-md-8">
-                <h2><span class="glyphicon glyphicon-send"></span> Message Sent</h2>
+                <h2><span class="glyphicon glyphicon-send"></span> Your Message Has Been Sent</h2>
             </div>
             
         </div>

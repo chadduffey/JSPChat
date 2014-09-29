@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class MessagesBean {
@@ -254,5 +255,84 @@ public class MessagesBean {
         
     }
     
+    public void writeMessageBody(Integer userId, String messageSubject, String messageBody){
+        //open a DB connection
+        try {
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            //commit all values to the DB
+            String query = "INSERT INTO msg_content (subject, body, sender_id, time) " +
+                            "VALUES ('" + messageSubject + "', " +
+                                    "'" + messageBody + "', " +
+                                    "'" + userId + "', " +
+                                    "'" + "11:30" + "')";
+            
+            Statement statement = connection.createStatement();
+            Integer rowCount = statement.executeUpdate(query);
+            statement.close();
+            
+   
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+    }
     
+    public int returnMessageId(){
+        
+        Integer msgId = 0;
+        //open a DB connection    
+        try {
+            //load driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            Statement statement = connection.createStatement();
+            ResultSet messages = statement.executeQuery("SELECT * FROM msg_content");
+
+            //check for last message
+            while (messages.next()){
+                msgId = messages.getInt("msg_id");
+            }
+            messages.close();
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        //we return zero if this fails, which will show up in the DB
+        return msgId;
+    }
+    
+    public void writeMessageLinks(Integer msgId, Integer rcptId){
+        //open a DB connection
+        try {
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            //commit all values to the DB
+            String query = "INSERT INTO messages (msg_id, recipient_id) " +
+                            "VALUES ('" + msgId + "', " +
+                                    "'" + rcptId + "')";
+            
+            Statement statement = connection.createStatement();
+            Integer rowCount = statement.executeUpdate(query);
+            statement.close();
+            
+   
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+    }
 }

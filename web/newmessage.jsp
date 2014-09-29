@@ -30,7 +30,7 @@
             </ul>
           </div>
         
-            <form action="NewMsgController" method="post">
+            <form action="CommitNewMessageController" method="post">
                 <div class="col-md-1">  
                     <h3>Recipients</h3>
                     <c:forEach var="item" items="${sessionCurrentUserBean.getFriendids()}">
