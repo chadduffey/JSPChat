@@ -24,8 +24,8 @@
                 <li><a href="welcome.jsp">Welcome</a></li>
                 <li><a href="PopulateFriendsController">Friends</a></li>
                 <li><a href="FindFriendsController">Find Friends</a></li>
-                <li><a href="messages.jsp">Inbox</a></li>
-                <li><a href="newmessage.jsp">New Message</a></li>
+                <li><a href="PopulateMessagesController">Inbox</a></li>
+                <li><a href="NewMsgController">New Message</a></li>
                 <li class="active"><a href="profileAuth.jsp">Profile</a></li>
                 <li><a href="LogoutController">Logout</a></li>
             </ul>

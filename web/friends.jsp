@@ -24,8 +24,8 @@
                 <li><a href="welcome.jsp">Welcome</a></li>
                 <li class="active"><a href="PopulateFriendsController">Friends</a></li>
                 <li><a href="FindFriendsController">Find Friends</a></li>
-                <li><a href="messages.jsp">Inbox</a></li>
-                <li><a href="newmessage.jsp">New Message</a></li>
+                <li><a href="PopulateMessagesController">Inbox</a></li>
+                <li><a href="NewMsgController">New Message</a></li>
                 <li><a href="profileAuth.jsp">Profile</a></li>
                 <li><a href="LogoutController">Logout</a></li>
             </ul>
@@ -41,7 +41,7 @@
                 <c:forEach var="item" items="${sessionFriendsBean.getAllFriendIds()}">
                     <tr>                  
                         <td><span class="glyphicon glyphicon-user"></span> ${sessionFriendsBean.getFriendName(item)}</td>
-                        <td><a href="PassRecipientIdController?id=${item}"><span class="glyphicon glyphicon-comment"></span></a></td>
+                        <td><a href="NewMsgController?id=${item}"><span class="glyphicon glyphicon-comment"></span></a></td>
                         <td><a href="UnFriendController?rmId=${item}"><span class="glyphicon glyphicon-thumbs-down"></span></a></td>
                     </tr>                   
                 </c:forEach>

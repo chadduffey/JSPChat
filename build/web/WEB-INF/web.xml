@@ -56,6 +56,14 @@
         <servlet-name>ModifyProfileController</servlet-name>
         <servlet-class>JSPChatPackage.ModifyProfileController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewMsgController</servlet-name>
+        <servlet-class>JSPChatPackage.NewMsgController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PopulateMessagesController</servlet-name>
+        <servlet-class>JSPChatPackage.PopulateMessagesController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
@@ -111,6 +119,14 @@
     <servlet-mapping>
         <servlet-name>ModifyProfileController</servlet-name>
         <url-pattern>/ModifyProfileController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewMsgController</servlet-name>
+        <url-pattern>/NewMsgController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PopulateMessagesController</servlet-name>
+        <url-pattern>/PopulateMessagesController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

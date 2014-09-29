@@ -23,22 +23,22 @@
                 <li><a href="welcome.jsp">Welcome</a></li>
                 <li><a href="PopulateFriendsController">Friends</a></li>
                 <li><a href="FindFriendsController">Find Friends</a></li>
-                <li><a href="messages.jsp">Inbox</a></li>
-                <li class="active"><a href="newmessage.jsp">New Message</a></li>
+                <li><a href="PopulateMessagesController">Inbox</a></li>
+                <li class="active"><a href="NewMsgController">New Message</a></li>
                 <li><a href="profileAuth.jsp">Profile</a></li>
                 <li><a href="LogoutController">Logout</a></li>
             </ul>
           </div>
         
-            <form action="NewMessageController" method="post">
+            <form action="NewMsgController" method="post">
                 <div class="col-md-1">  
                     <h3>Recipients</h3>
-                    <c:forEach var="item" items="${sessionFriends}">
+                    <c:forEach var="item" items="${sessionCurrentUserBean.getFriendids()}">
                         
                         <c:if test="${rcptname == item}">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="recipients" checked value=${item}> ${item}
+                                    <input type="checkbox" name="recipients" checked value=${item}> ${sessionFriendsBean.getFriendName(item)}
                                 </label>
                             </div>
                         </c:if>
@@ -46,7 +46,7 @@
                         <c:if test="${rcptname != item}">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="recipients" value=${item}> ${item}
+                                    <input type="checkbox" name="recipients" value=${item}> ${sessionFriendsBean.getFriendName(item)}
                                 </label>
                             </div>
                         </c:if>
