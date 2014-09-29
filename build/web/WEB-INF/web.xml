@@ -64,6 +64,10 @@
         <servlet-name>PopulateMessagesController</servlet-name>
         <servlet-class>JSPChatPackage.PopulateMessagesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReadMessageController</servlet-name>
+        <servlet-class>JSPChatPackage.ReadMessageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>PopulateMessagesController</servlet-name>
         <url-pattern>/PopulateMessagesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReadMessageController</servlet-name>
+        <url-pattern>/ReadMessageController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

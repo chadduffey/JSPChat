@@ -11,6 +11,22 @@ public class MessagesBean {
     
     private Integer[] AllMsgIds;
     private String[] AllMsgSubjects;
+    
+    private String msgSubject;
+    private String msgContent;
+    private String msgSender;
+
+    public String getMsgSubject() {
+        return msgSubject;
+    }
+
+    public String getMsgContent() {
+        return msgContent;
+    }
+
+    public String getMsgSender() {
+        return msgSender;
+    }
 
     public Integer[] getAllMsgIds() {
         return AllMsgIds;
@@ -192,5 +208,49 @@ public class MessagesBean {
         }
 
         return "Not Found";   
+    }
+    
+    public String getMessageContent(Integer msgId){
+
+        String theContent = null;
+        
+        //open a DB connection
+        try {
+            //load driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            String preparedSQL = "SELECT * FROM msg_content WHERE msg_id = ?";
+            PreparedStatement ps = connection.prepareStatement(preparedSQL);
+            ps.setInt(1, msgId);
+            ResultSet mymessages = ps.executeQuery();
+            mymessages.next();
+            theContent = mymessages.getString("body"); 
+            mymessages.close();
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (theContent == null){
+            theContent = "not found " + msgId + " *";
+        }
+        
+        return theContent;
+        //return "not found " + msgId + " *";    
+    }
+    
+    public void setIndividualMessageContent(Integer id){
+        msgSubject = getMessageSubject(id);
+        msgSender = getMessageSenderName(id);
+        msgContent = getMessageContent(id);
+        
     }
 }

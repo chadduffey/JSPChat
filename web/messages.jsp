@@ -40,7 +40,7 @@
                 <c:forEach var="item" items="${sessionMessagesBean.getAllMsgIds()}">
                     <tr>                  
                         <td><span class="glyphicon glyphicon-envelope"></span><input type="hidden" name="id" value=${item}></td>
-                        <td><a href="readMessage.jsp">${sessionMessagesBean.getMessageSubject(item)}</a></td> 
+                        <td><a href="ReadMessageController?id=${item}">${sessionMessagesBean.getMessageSubject(item)}</a></td> 
                         <td>${sessionMessagesBean.getMessageSenderName(item)}</td>
                     </tr>                   
                 </c:forEach>

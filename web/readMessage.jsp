@@ -32,11 +32,11 @@
           
           <div class="col-md-8">  
                     <h3>Sender</h3>
-                    <input type="text" name="sender" class="form-control" disabled=""><br>
+                    <input type="text" name="sender" class="form-control" disabled="" value="${sessionMsgContent.getMsgSender()}"><br>
                     <h3>Subject</h3>
-                    <input type="text" name="subject" class="form-control" disabled=""><br>
+                    <input type="text" name="subject" class="form-control" disabled="" value="${sessionMsgContent.getMsgSubject()}"><br>
                     <h3>Message</h3>
-                    <textarea name="message" rows="10" class="form-control" disabled=""></textarea>
+                    <textarea name="message" rows="10" class="form-control" disabled="">${sessionMsgContent.getMsgContent()}</textarea>
               <a href="PopulateMessagesController">Back To Inbox</a>
           </div>  
             
