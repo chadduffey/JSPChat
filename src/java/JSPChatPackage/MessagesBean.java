@@ -335,4 +335,41 @@ public class MessagesBean {
                 e.printStackTrace();
         }
     }
+    
+    public boolean isRead(Integer id, Integer User){
+        
+        //open a DB connection
+        try {
+            //load driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            String preparedSQL = "SELECT * FROM messages WHERE msg_id = ? AND recipient_id = ?";
+            PreparedStatement ps = connection.prepareStatement(preparedSQL);
+            ps.setInt(1, id);
+            ps.setInt(2, User);
+            ResultSet mymessages = ps.executeQuery();
+            mymessages.next();
+            Integer value = mymessages.getInt("is_read"); 
+            mymessages.close();
+            
+            if (value == 1){
+                return true;
+            }
+            
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        //if we cant prove its read, assume it is not
+        return false;
+    }
 }

@@ -36,12 +36,22 @@
                     <th>Opened?</th>
                     <th>Subject</th>
                     <th>Sender</th>
+                    <th>Delete?</th>
                 </tr>
                 <c:forEach var="item" items="${sessionMessagesBean.getAllMsgIds()}">
                     <tr>                  
-                        <td><span class="glyphicon glyphicon-envelope"></span><input type="hidden" name="id" value=${item}></td>
+                        
+                        <c:if test="${sessionMessagesBean.isRead(item, sessionCurrentUserBean.getId()) == false}">
+                            <td><span class="glyphicon glyphicon-envelope"></span><input type="hidden" name="id" value=${item}></td>
+                        </c:if>
+
+                        <c:if test="${sessionMessagesBean.isRead(item, sessionCurrentUserBean.getId()) == true}">
+                            <td><span class="glyphicon glyphicon-ok"></span><input type="hidden" name="id" value=${item}></td>
+                        </c:if>
+                        
                         <td><a href="ReadMessageController?id=${item}">${sessionMessagesBean.getMessageSubject(item)}</a></td> 
                         <td>${sessionMessagesBean.getMessageSenderName(item)}</td>
+                        <td><a href="#"><span class="glyphicon glyphicon-trash"></span> </a></td>
                     </tr>                   
                 </c:forEach>
             </table>
