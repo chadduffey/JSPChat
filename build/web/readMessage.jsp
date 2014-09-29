@@ -30,21 +30,14 @@
             </ul>
           </div>
           
-            <div class="col-md-8">  
-            <table class="table table-striped">
-                <tr>
-                    <th>Opened?</th>
-                    <th>Subject</th>
-                    <th>Sender</th>
-                </tr>
-                <c:forEach var="item" items="${sessionMessagesBean.getAllMsgIds()}">
-                    <tr>                  
-                        <td><span class="glyphicon glyphicon-envelope"></span><input type="hidden" name="id" value=${item}></td>
-                        <td><a href="readMessage.jsp">${sessionMessagesBean.getMessageSubject(item)}</a></td> 
-                        <td>${sessionMessagesBean.getMessageSenderName(item)}</td>
-                    </tr>                   
-                </c:forEach>
-            </table>
+          <div class="col-md-8">  
+                    <h3>Sender</h3>
+                    <input type="text" name="sender" class="form-control" disabled=""><br>
+                    <h3>Subject</h3>
+                    <input type="text" name="subject" class="form-control" disabled=""><br>
+                    <h3>Message</h3>
+                    <textarea name="message" rows="10" class="form-control" disabled=""></textarea>
+              <a href="PopulateMessagesController">Back To Inbox</a>
           </div>  
             
         </div>
