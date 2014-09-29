@@ -28,6 +28,7 @@ public class PopulateMessagesController extends HttpServlet {
         messagesbean.getAllMessageSubjects(msgIds);
         
         
+        
         //store the friends bean on the session object        
         session.setAttribute("sessionMessagesBean", messagesbean);
         

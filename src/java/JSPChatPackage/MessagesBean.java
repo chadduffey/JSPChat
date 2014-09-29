@@ -116,5 +116,81 @@ public class MessagesBean {
         AllMsgSubjects = messagesArray;
         
         return messagesArray;  
-    }    
+    }
+    
+    public Integer getMessageSenderId(Integer msgId){
+
+        Integer senderId = null;
+        
+        //open a DB connection
+        try {
+            //load driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            String preparedSQL = "SELECT * FROM msg_content WHERE msg_id = ?";
+            PreparedStatement ps = connection.prepareStatement(preparedSQL);
+            ps.setInt(1, msgId);
+            ResultSet mymessages = ps.executeQuery();
+            mymessages.next();
+            senderId = mymessages.getInt("sender_id"); 
+            mymessages.close();
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        return senderId;   
+    }
+    
+    public String getMessageSenderName(Integer msgId){
+
+        Integer senderId = null;
+        
+        //open a DB connection
+        try {
+            //load driver
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            String preparedSQL = "SELECT * FROM msg_content WHERE msg_id = ?";
+            PreparedStatement ps = connection.prepareStatement(preparedSQL);
+            ps.setInt(1, msgId);
+            ResultSet mymessages = ps.executeQuery();
+            mymessages.next();
+            senderId = mymessages.getInt("sender_id"); 
+                        
+            //get the name
+            String preparedSQL2 = "SELECT * FROM user WHERE user_id = ?";
+            PreparedStatement ps2 = connection.prepareStatement(preparedSQL2);
+            ps2.setInt(1, senderId);
+            ResultSet mysender = ps2.executeQuery();
+            mysender.next();
+            String senderName = mysender.getString("name"); 
+            
+            mymessages.close();
+            mysender.close();
+            
+            return senderName;
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return "Not Found";   
+    }
 }

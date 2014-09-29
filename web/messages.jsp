@@ -41,7 +41,7 @@
                     <tr>                  
                         <td><span class="glyphicon glyphicon-envelope"></span></td>
                         <td>${sessionMessagesBean.getMessageSubject(item)}</td> 
-                        <td></td>
+                        <td>${sessionMessagesBean.getMessageSenderName(item)}</td>
                     </tr>                   
                 </c:forEach>
             </table>
