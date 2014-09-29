@@ -35,7 +35,7 @@
                     <h3>Recipients</h3>
                     <c:forEach var="item" items="${sessionCurrentUserBean.getFriendids()}">
                         
-                        <c:if test="${rcptname == item}">
+                        <c:if test="${tempid == item}">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" name="recipients" checked value=${item}> ${sessionFriendsBean.getFriendName(item)}
@@ -43,7 +43,7 @@
                             </div>
                         </c:if>
 
-                        <c:if test="${rcptname != item}">
+                        <c:if test="${tempid != item}">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" name="recipients" value=${item}> ${sessionFriendsBean.getFriendName(item)}

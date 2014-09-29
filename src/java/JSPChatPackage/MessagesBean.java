@@ -253,4 +253,6 @@ public class MessagesBean {
         msgContent = getMessageContent(id);
         
     }
+    
+    
 }
