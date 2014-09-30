@@ -51,7 +51,7 @@
                         
                         <td><a href="ReadMessageController?id=${item}">${sessionMessagesBean.getMessageSubject(item)}</a></td> 
                         <td>${sessionMessagesBean.getMessageSenderName(item)}</td>
-                        <td><a href="#"><span class="glyphicon glyphicon-trash"></span> </a></td>
+                        <td><a href="DeleteMessageController?id=${item}"><span class="glyphicon glyphicon-trash"></span> </a></td>
                     </tr>                   
                 </c:forEach>
             </table>

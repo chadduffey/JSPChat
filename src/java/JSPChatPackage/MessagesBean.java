@@ -52,7 +52,7 @@ public class MessagesBean {
             String dbPassword = "Password123";
             Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
 
-            String preparedSQL = "SELECT * FROM messages WHERE recipient_id = ?";
+            String preparedSQL = "SELECT * FROM messages WHERE recipient_id = ? AND isnull(is_deleted)";
             PreparedStatement ps = connection.prepareStatement(preparedSQL);
             ps.setInt(1, userId);
 
@@ -405,5 +405,39 @@ public class MessagesBean {
         } catch (SQLException e) {
                 e.printStackTrace();
         }       
+    }
+    
+    public void deleteMessage (Integer msgid, Integer userid){
+    //open a DB connection
+        try {
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            String preparedSQL = "SELECT * FROM messages WHERE msg_id = ? AND recipient_id = ?";
+            PreparedStatement ps = connection.prepareStatement(preparedSQL);
+            ps.setInt(1, msgid);
+            ps.setInt(2, userid);
+            ResultSet mymessages = ps.executeQuery();
+            mymessages.next();
+            Integer value = mymessages.getInt("id"); 
+            mymessages.close();
+            
+            
+
+            //commit all values to the DB
+            String query = "UPDATE messages SET " +
+                    "is_deleted = '" + 1 + 
+                    "' WHERE id = '" + value + "'";
+
+            Statement statement = connection.createStatement();
+            Integer rowCount = statement.executeUpdate(query);
+            
+            statement.close();
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }    
     }
 }

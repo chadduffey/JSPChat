@@ -72,6 +72,10 @@
         <servlet-name>CommitNewMessageController</servlet-name>
         <servlet-class>JSPChatPackage.CommitNewMessageController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteMessageController</servlet-name>
+        <servlet-class>JSPChatPackage.DeleteMessageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>CommitNewMessageController</servlet-name>
         <url-pattern>/CommitNewMessageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteMessageController</servlet-name>
+        <url-pattern>/DeleteMessageController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
