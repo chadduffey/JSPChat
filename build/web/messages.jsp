@@ -30,7 +30,8 @@
             </ul>
           </div>
           
-            <div class="col-md-8">  
+            <div class="col-md-8"> 
+            <h2>Your Messages</h2>
             <table class="table table-striped">
                 <tr>
                     <th>Opened?</th>
@@ -55,6 +56,7 @@
                     </tr>                   
                 </c:forEach>
             </table>
+            <h5><a href="messagesDeletedItems.jsp"><span class="glyphicon glyphicon-zoom-in"></span>Recycle Bin</a></h5>
           </div>  
             
         </div>
