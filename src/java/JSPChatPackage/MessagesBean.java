@@ -372,4 +372,38 @@ public class MessagesBean {
         //if we cant prove its read, assume it is not
         return false;
     }
+    
+    public void markMessageRead(Integer msgId, Integer user){
+        //open a DB connection
+        try {
+            String dbURL = "jdbc:mysql://localhost:3306/jspchat";
+            String dbUsername = "root";
+            String dbPassword = "Password123";
+            Connection connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+
+            String preparedSQL = "SELECT * FROM messages WHERE msg_id = ? AND recipient_id = ?";
+            PreparedStatement ps = connection.prepareStatement(preparedSQL);
+            ps.setInt(1, msgId);
+            ps.setInt(2, user);
+            ResultSet mymessages = ps.executeQuery();
+            mymessages.next();
+            Integer value = mymessages.getInt("id"); 
+            mymessages.close();
+            
+            
+
+            //commit all values to the DB
+            String query = "UPDATE messages SET " +
+                    "is_read = '" + 1 + 
+                    "' WHERE id = '" + value + "'";
+
+            Statement statement = connection.createStatement();
+            Integer rowCount = statement.executeUpdate(query);
+            
+            statement.close();
+            
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }       
+    }
 }

@@ -25,6 +25,13 @@ public class ReadMessageController extends HttpServlet {
         //set the session object for the individual message
         HttpSession session = request.getSession();     
         session.setAttribute("sessionMsgContent", messagebean);
+       
+        
+        //get the current user bean, assign it to a bean object to work with
+        CurrentUserBean currentuserbean = (CurrentUserBean) session.getAttribute("sessionCurrentUserBean");
+        
+        //mark the message as read
+        messagebean.markMessageRead(message, currentuserbean.getId());
         
         //display the page
         RequestDispatcher dispatch = request.getRequestDispatcher("/readMessage.jsp");
